@@ -1,4 +1,6 @@
-<div *ngIf="countries.length === 0; else table" class="alert alert-warning text-center">
+<div *ngIf="countries.length === 0; else table"
+  class="alert alert-warning text-center"
+  [ngClass]="{'alert-warning': !notFound, 'alert-danger': notFound}">
   No hay paises que mostrar
 </div>
 

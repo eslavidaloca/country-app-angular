@@ -1,7 +1,9 @@
+<!-- (keyup.enter)="searchCountry()" -->
 <input
   type="text"
   [placeholder]="placeholder"
+  [value]="initialValue"
   class="form-control"
-  (keyup.enter)="searchCountry()"
+  (keyup)="OnKeyPress(txtInput.value)"
   #txtInput
 />

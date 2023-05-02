@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Country } from '../../interfaces/country';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'country-table',
@@ -10,8 +10,22 @@ import { Country } from '../../interfaces/country';
     }`
   ]
 })
-export class CountryTableComponent {
+export class CountryTableComponent implements OnChanges {
+
+  public notFound: boolean = false;
 
   @Input()
   public countries: Country[] = [];
+
+  @Input()
+  public isLoading: boolean = false;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['isLoading'].currentValue === false &&
+      changes['isLoading'].previousValue === true &&
+      this.countries.length === 0)
+      this.notFound = true;
+    else
+      this.notFound = false;
+  }
 }
