@@ -21,6 +21,7 @@ export class CountryTableComponent implements OnChanges {
   public isLoading: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
     if(changes['isLoading'].currentValue === false &&
       changes['isLoading'].previousValue === true &&
       this.countries.length === 0)
